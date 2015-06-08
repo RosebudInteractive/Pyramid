@@ -1,0 +1,191 @@
+{
+  "$sys":{
+    "guid":"e705ad5c-e516-a325-76ec-ce4a0083430b",
+    "typeGuid":"7f93991a-4da9-4892-79c2-35fe44e69083"
+  },
+  "fields":{
+    "Id":1234,
+    "Name":"LabyForm",
+    "Title": "LabyForm"
+  },
+  "collections": {
+    "Children": [
+      {
+        "$sys": {
+          "guid": "1de0218f-8daa-6447-a77b-b47056332d8e",
+          "typeGuid": "1d95ab61-df00-aec8-eff5-0f90187891cf"
+        },
+        "fields": {
+          "Id": 11,
+          "Name": "MainContainer"
+        },
+        "collections": {
+          "Children": [
+            {
+              "$sys": {
+                "guid": "a170352d-53c0-8b21-e538-f456c0039682",
+                "typeGuid": "6485c5b9-a725-264b-2436-5dbdff2cc6b1"
+              },
+              "fields": {
+                "Id": 127,
+                "Name": "Laby",
+                "SizeX": 5,
+                "SizeY": 5,
+                "Left": 50,
+                "Top": 50
+              },
+              "collections": {
+                "Walls": [
+                  {
+                    "$sys": {
+                      "guid": "7d95ebfe-fdb0-628c-e5f3-5b8636d77390",
+                      "typeGuid": "cfb20963-53ae-8b59-4d43-ab205d016b82"
+                    },
+                    "fields": {
+                      "X": 1,
+                      "Y": 1,
+                      "WallType": "H",
+                      "Length": 1
+                    }
+                  },
+                  {
+                    "$sys": {
+                      "guid": "74055135-82b1-a465-655a-55e6e8b6d9d5",
+                      "typeGuid": "cfb20963-53ae-8b59-4d43-ab205d016b82"
+                    },
+                    "fields": {
+                      "X": 3,
+                      "Y": 1,
+                      "WallType": "H",
+                      "Length": 1
+                    }
+                  },
+                  {
+                    "$sys": {
+                      "guid": "16f6417f-e4e3-7d8e-05fc-9cd3164f5b17",
+                      "typeGuid": "cfb20963-53ae-8b59-4d43-ab205d016b82"
+                    },
+                    "fields": {
+                      "X": 0,
+                      "Y": 2,
+                      "WallType": "H",
+                      "Length": 1
+                    }
+                  },
+                  {
+                    "$sys": {
+                      "guid": "178b5ba8-58aa-ae43-4b2e-11b52e75f925",
+                      "typeGuid": "cfb20963-53ae-8b59-4d43-ab205d016b82"
+                    },
+                    "fields": {
+                      "X": 3,
+                      "Y": 2,
+                      "WallType": "H",
+                      "Length": 1
+                    }
+                  },
+                  {
+                    "$sys": {
+                      "guid": "c86778b0-32c2-fc90-f3d6-8f6f3ec78af8",
+                      "typeGuid": "cfb20963-53ae-8b59-4d43-ab205d016b82"
+                    },
+                    "fields": {
+                      "X": 4,
+                      "Y": 3,
+                      "WallType": "H",
+                      "Length": 1
+                    }
+                  },
+                  {
+                    "$sys": {
+                      "guid": "2e5d6d9e-5aa5-2f0e-24f4-a5ca82f6b750",
+                      "typeGuid": "cfb20963-53ae-8b59-4d43-ab205d016b82"
+                    },
+                    "fields": {
+                      "X": 1,
+                      "Y": 4,
+                      "WallType": "H",
+                      "Length": 3
+                    }
+                  },
+                  {
+                    "$sys": {
+                      "guid": "2eff251b-6088-b4a5-d774-7d8ae892fd45",
+                      "typeGuid": "cfb20963-53ae-8b59-4d43-ab205d016b82"
+                    },
+                    "fields": {
+                      "X": 1,
+                      "Y": 2,
+                      "WallType": "V",
+                      "Length": 2
+                    }
+                  },
+                  {
+                    "$sys": {
+                      "guid": "f1a11edb-6694-9415-7b3e-11611f969b3c",
+                      "typeGuid": "cfb20963-53ae-8b59-4d43-ab205d016b82"
+                    },
+                    "fields": {
+                      "X": 2,
+                      "Y": 0,
+                      "WallType": "V",
+                      "Length": 3
+                    }
+                  },
+                  {
+                    "$sys": {
+                      "guid": "2478a645-59ae-4a82-a888-aeefb30f3a92",
+                      "typeGuid": "cfb20963-53ae-8b59-4d43-ab205d016b82"
+                    },
+                    "fields": {
+                      "X": 3,
+                      "Y": 2,
+                      "WallType": "V",
+                      "Length": 2
+                    }
+                  },
+                  {
+                    "$sys": {
+                      "guid": "47ffb9af-b700-d515-7f5e-a9039454e297",
+                      "typeGuid": "cfb20963-53ae-8b59-4d43-ab205d016b82"
+                    },
+                    "fields": {
+                      "X": 4,
+                      "Y": 1,
+                      "WallType": "V",
+                      "Length": 1
+                    }
+                  }
+                ],
+                "Items":[
+                  {
+                    "$sys": {
+                      "guid": "266c2480-b992-b2c6-2821-755de7006249",
+                      "typeGuid": "55c5c9e5-75fe-5eaf-a9a8-f03cd0748bef"
+                    },
+                    "fields": {
+                      "X": 2,
+                      "Y": 1,
+                      "ItemType": "H"
+                    }
+                  },
+                  {
+                    "$sys": {
+                      "guid": "70ebe204-54c8-5c1e-e037-7af92aadc62b",
+                      "typeGuid": "55c5c9e5-75fe-5eaf-a9a8-f03cd0748bef"
+                    },
+                    "fields": {
+                      "X": 3,
+                      "Y": 4,
+                      "ItemType": "Y"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

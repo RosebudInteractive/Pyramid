@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>Лабиринт</title>
+<link href="/public/img/Favicon.png" rel="icon" type="image/png" />
+<script src="/public/uccello/uses/socket.io.js"></script>
+<script src="/public/uccello/uses/jquery-1.11.1.min.js"></script>
+<link type="text/css" rel="stylesheet" href="/public/css/style.css" media="all">
+<script type="text/javascript" src="/public/libs/zclip/jquery.zclip.min.js"></script>
+<script type="text/javascript" src="/public/libs/paper-full.min.js"></script>
+<script src="/public/uccello/uses/url.js"></script>
+<script src="/public/uccello/uses/jquery.cookie.js"></script>
+<script src="/public/uccello/uses/class-extend.js"></script>
+<script src="/public/uccello/uses/uccello-class-extend.js"></script>
+<script src="/public/uccello/uses/require.js"></script>
+<script>var webSocketServerPort = '<%= webSocketServerPort %>';</script>
+<script src="/public/game.js"></script>
+</head>
+<body>
+
+<div id="header">
+    <div style="float: left;" id="userInfo"></div>
+</div>
+
+<div id="interface">
+    <a href="#" id="login" style="display: none;">Войти</a>
+    <a href="#" id="logout" style="display: none;" onclick="return logout();">Выйти</a>
+    <br><br>
+    <input type="button" value="создать лабиринт" title="создать лабиринт" onclick="createContext();">
+    <select id="userContext"></select>
+    <input type="button" id="openContext" value="open" />
+
+
+    <br>
+    <br>
+
+    <div id="tabs"></div>
+    <div id="container"></div>
+</div>
+
+<div id="loginForm" style="position: absolute; left:0px;top:60px;">
+    <div id="loginError"></div>
+    Имя: <input type="text" value="u1" id="loginName"><br>
+    <input type="hidden" value="p1" id="loginPass">
+    <!-- Пароль:<input type="password" value="p1" id="loginPass"><br>-->
+    <input type="button" value="Войти" onclick="login($('#loginName').val(), $('#loginPass').val())">
+</div>
+
+<div id="dbNavigatorForm" >
+
+</div>
+
+</body>
+</html>

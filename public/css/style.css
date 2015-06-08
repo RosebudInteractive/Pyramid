@@ -1,0 +1,123 @@
+html, body, table,tr, td {padding:0;margin: 0; font-family: 'Open Sans', sans-serif;font-size: 12px;}
+p {padding:0;margin: 4px 0;}
+#interface {padding:30px 0 0;}
+#tabs {padding:0 10px 10px;}
+#container {}
+#container > div {float:left;}
+.tabs-page {position: absolute;width: 100%; overflow: hidden;height:100%;box-sizing: border-box;}
+.tabs.active {background-color: #fff;}
+#editor {position: relative;width:200px;border:1px solid #999;width: 30%;box-sizing: border-box;padding:10px;border-left:0;overflow: auto;}
+#editor .controls {clear:both;}
+#console-block {height: 70px;position:absolute;}
+#console {padding: 0;margin: 0;}
+
+.control {top:0;left:0;z-index: 1;}
+.control.edit{background-color: #fff;display: block;
+    width: 100%;
+    box-sizing: border-box;}
+.control.label{background-color: #fff;}
+.control.container{overflow: auto;background-color: #fff;border:1px solid #999;position:relative;width: 100%;height: 100%;box-sizing: border-box;}
+.control.form{overflow: auto;background-color: #fff;border:1px solid #999;position:relative;width: 100%;height: 100%;box-sizing: border-box;}
+.control.prop-editor{padding:10px; border: 1px solid #aaa;background-color: #fff;}
+.control.prop-editor input{position: relative;}
+.control.prop-editor .props .name {width:100px;display: inline-block;}
+.control.prop-editor .parents .name {width:100px;display: inline-block;}
+
+.control-wrapper {border:1px solid #ddd;overflow: auto; box-sizing: border-box; }
+.control.c-container {  width: 100%;  height: 100%;  box-sizing: border-box;}
+.control.c-container > .control-wrapper {position: absolute;}
+.control.button {display: block;  width: 100%;  box-sizing: border-box;}
+.control.h-container {height: 100%;
+    position: absolute;
+    width: 100%;}
+.control.h-container > .control-wrapper {position:relative;float:left;height: 100%;  width: 100%;}
+.control.v-container  { height: 100%; display: -webkit-flex; flex-direction: column;  -webkit-flex-direction: column;  -moz-flex-direction: column;  -ms-flex-direction: column;}
+.control.v-container > .control-wrapper {position:relative;width: 100%;height: 100%;}
+.control.g-container table{
+    border-collapse: collapse;
+    border: 1px solid #bbb;
+}
+.control.g-container table td{
+    border: 1px solid #bbb;
+}
+
+.navigator {position: absolute; background-color: #fff;font-size: 12px;}
+.navigator .left {width:240px;overflow: auto;}
+.navigator a {text-decoration: none; color:#000000;}
+.navigator a:hover {text-decoration: none;}
+.navigator a.active {background-color: #333;color:#fff;}
+.navigator .centerTop {width:240px;overflow: auto;height: 60px;}
+.navigator .centerBottom {width:240px;overflow: auto;}
+.navigator .right {width:260px;overflow: auto;}
+.navigator td {border:1px solid #999;padding:5px;}
+.navigator input.value {width:100px;}
+.navigator input.save {}
+.navigator .right span {display: inline-block;}
+.navigator .right span.name {width:70px;}
+.navigator .right span.type {width:40px;}
+.navigator .right input {display: inline-block;}
+.navigator .levels .level{width:284px;padding:5px;margin:5px;border:1px solid #999;}
+
+.divTable
+{
+    position: absolute;
+    display:  table;
+    width:auto;
+    border:1px solid  #666666;
+    border-spacing:0px;/*cellspacing:poor IE support for  this*/
+    /* border-collapse:separate;*/
+}
+
+
+.divRow .divCell:last-child {border-right:0;}
+.divTable:last-child .divRow:last-child .divCell {border-bottom:0;}
+
+.divRow
+{
+    display:table-row;
+    width:auto;
+    clear:both;
+}
+
+.divCell
+{
+    display:table-cell;
+    width:60px;
+    border-right:1px solid  #666666;
+    border-bottom:1px solid  #666666;
+    border-collapse: collapse;
+    padding:10px;
+}
+
+.divCell textarea {min-width:50px;min-height: 20px;}
+
+.grid {position: absolute;border:1px solid  #666666;border-spacing:0px;overflow: auto;box-sizing: border-box;}
+.grid .table {display: table;box-sizing: border-box;width:100%;}
+.grid .row .cell:last-child {border-right:1px solid  #666666;}
+.grid:last-child .row:last-child .cell {border-bottom:0;}
+.grid .row{display:table-row;width:auto;clear:both;box-sizing: border-box;width:100%;}
+.grid .row.active{background-color: #333333; color:#ffffff;}
+.grid .cell{font-size:11px;display:table-cell;border-right:1px solid  #666666;border-bottom:1px solid  #666666;border-collapse: collapse;padding:5px;float:left;overflow: hidden;white-space: nowrap; text-overflow: ellipsis;box-sizing: border-box;}
+.grid .cell.w60{width: 60px;}
+.grid .header{font-weight:bold;font-size:12px;display:table-caption;border-right:1px solid  #666666;border-bottom:1px solid  #666666;border-collapse: collapse;padding:5px;border-top:1px solid  #666666;float:left;box-sizing: border-box;}
+.grid .header.w60{width: 60px;}
+
+.laby  {margin: 50px;padding:0;margin: 0;box-sizing: border-box;border: 2px solid #000; }
+.laby .row {width:auto;height:50px;padding:0;margin: 0;box-sizing: border-box;}
+.laby .row .cell{ float: left;padding:0;margin: 0;margin-right: -2px;  margin-bottom: -2px;box-sizing: border-box; overflow: hidden;}
+.laby .cell {width:50px;height:50px;}
+.laby .cell .item{width: 16px;
+    height: 16px;
+    background-color: cadetblue;
+    margin-top: 14px;
+    margin-left: 14px;
+    color: #fff;
+    padding: 2px;
+    text-align: center;
+    font-size: 11px; line-height: 16px;position: absolute;}
+.laby .cell.h {border-top: 2px solid #000;}
+.laby .cell.v {border-left: 2px solid #000;}
+
+#loginForm { padding:5px; position: absolute; width: 200px; height: auto; left: 100px; top: 50px; z-index: 2; background-color: #ffffff; border: 1px solid #bababa; }
+#header {position:absolute;}
+#loginError {color: #ff0000;}
