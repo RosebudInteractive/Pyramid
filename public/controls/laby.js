@@ -55,17 +55,18 @@ define(
             },
 
             processDelta: function() {
-                var ds = this.dataset();
-                if (ds) {
-                    if (!ds._isProcessed()) ds.processDelta(); // если у датасета processDelta еще не вызван, то вызвать его
-                    var root = ds.root();
-                    if (root)
-                        var dsmod = root.isDataModified();
-                    else dsmod = false;
-                    if (ds.isFldModified("Root") || ds.isFldModified("Cursor") || dsmod) this._isRendered(false);
+                var items = this.getCol('Items');
+                if (items) {
+                    var modified = false;
+                    for (var i = 0, len = items.count(); i < len; i++) {
+                        var item = items.get(i);
+                        if (item.isFldModified("X") || item.isFldModified("Y"))
+                            modified = true;
+                    }
+                    if (modified)
+                        this._isRendered(false);
                 }
                 this._isProcessed(true);
-
             },
 
             // Properties
