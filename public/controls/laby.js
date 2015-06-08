@@ -54,6 +54,20 @@ define(
                 viewset.render.apply(this, [options]);
             },
 
+            processDelta: function() {
+                var ds = this.dataset();
+                if (ds) {
+                    if (!ds._isProcessed()) ds.processDelta(); // если у датасета processDelta еще не вызван, то вызвать его
+                    var root = ds.root();
+                    if (root)
+                        var dsmod = root.isDataModified();
+                    else dsmod = false;
+                    if (ds.isFldModified("Root") || ds.isFldModified("Cursor") || dsmod) this._isRendered(false);
+                }
+                this._isProcessed(true);
+
+            },
+
             // Properties
             sizeX: function(value) {
                 return this._genericSetter("SizeX", value);

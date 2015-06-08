@@ -41,30 +41,39 @@ define(
                     matrixLaby[x][y].itemLid = lid;
                 }
 
+                //this.matrixLaby = matrixLaby;
+
                 // перемещение первого объекта
                 var firstItem = this.getControlMgr().get(items.get(0).getGuid());
                 $(document).keydown(function(e) {
                     var x = firstItem.x(), y=firstItem.y();
+                    var deltaValue = false, deltaMethod = null;
                     if (e.which>36 && e.which<41) {
-                        that.getControlMgr().userEventHandler(that, function(){
-                            switch(e.which) {
-                                case 37: // left
-                                    if (x>0) firstItem.x(x-1);
-                                    break;
-                                case 38: // up
-                                    if (y>0) firstItem.y(y-1);
-                                    break;
-                                case 39: // right
-                                    if (x<sizeX-1) firstItem.x(x+1);
-                                    break;
-                                case 40: // down
-                                    if (y<sizeY-1) firstItem.y(y+1);
-                                    break;
-                                default: return; // exit this handler for other keys
-                            }
-                            vLaby.renderItem.apply(that, [firstItem]);
-                        });
+                        switch(e.which) {
+                            case 37: // left
+                                if (x>0 && !matrixLaby[x][y].checkV){deltaValue=x-1;deltaMethod='x';}
+                                break;
+                            case 38: // up
+                                if (y>0 && !matrixLaby[x][y].checkH){deltaValue=y-1;deltaMethod='y';}
+                                break;
+                            case 39: // right
+                                if (x<sizeX-1 &&!matrixLaby[x+1][y].checkV){deltaValue=x+1;deltaMethod='x';}
+                                break;
+                            case 40: // down
+                                if (y<sizeY-1 && !matrixLaby[x][y+1].checkH){deltaValue=y+1;deltaMethod='y';}
+                                break;
+                            default: return; // exit this handler for other keys
+                        }
                         e.preventDefault(); // prevent the default action (scroll / move caret)
+
+                        // если есть что обновить
+                        if (deltaMethod) {
+                            that.getControlMgr().userEventHandler(that, function(){
+                                firstItem[deltaMethod](deltaValue);
+                                vLaby.renderItem.apply(that, [firstItem]);
+                            });
+                        }
+
                     }
                 });
 
