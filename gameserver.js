@@ -77,12 +77,12 @@ function fakeAuthenticate(user, pass, done) {
 
 var config = {
     controls:[
+        {className:'Item', component:'item', viewset:true, guid:'55c5c9e5-75fe-5eaf-a9a8-f03cd0748bef'},
         {className:'Wall', component:'wall', viewset:true, guid:'cfb20963-53ae-8b59-4d43-ab205d016b82'},
-        {className:'Laby', component:'laby', viewset:true, guid:'6485c5b9-a725-264b-2436-5dbdff2cc6b1'},
-        {className:'Item', component:'item', viewset:true, guid:'55c5c9e5-75fe-5eaf-a9a8-f03cd0748bef'}
+        {className:'Laby', component:'laby', viewset:true, guid:'6485c5b9-a725-264b-2436-5dbdff2cc6b1'}
     ],
-    controlsPath: __dirname+'/../Game/public/controls/',
-    dataPath: __dirname+'/../Game/data/',
+    controlsPath: __dirname+'/public/controls/',
+    dataPath: __dirname+'/data/',
     uccelloPath: __dirname+'/../'+uccelloDir+'/'
 };
 
