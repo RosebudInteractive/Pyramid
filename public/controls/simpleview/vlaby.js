@@ -6,47 +6,20 @@ define(
         vLaby.render = function(options) {
             var item = $('#' + this.getLid());
             var that = this;
+
+            // перемещение последнего объекта
+            var items = this.getCol('Items');
+
+            if (!this.lastItem)
+                this.lastItem = items.count()>0 ?this.getControlMgr().get(items.get(items.count()-1).getGuid()):null;
+
             if (item.length == 0) {
                 item = $(vLaby._templates['laby']).attr('id', this.getLid());
-
-                // создаем матрицу лабиринта
-                var matrixLaby = [];
-                var sizeX = this.sizeX(), sizeY = this.sizeY();
-                for(var i=0; i<sizeX; i++) {
-                    matrixLaby[i] = [];
-                    for(var j=0; j<sizeY; j++) {
-                        matrixLaby[i][j] = {checkH:false, checkV:false, itemType:false};
-                    }
-                }
-
-                var walls = this.getCol('Walls');
-                for(var i=0; i<walls.count();i++) {
-                    var wall = this.getControlMgr().get(walls.get(i).getGuid());
-                    var x=wall.x(), y=wall.y(), len=wall.length(), wallType=wall.wallType();
-                    if (wallType == 'H') {
-                        for(var k=x; k<x+len; k++)
-                            matrixLaby[k][y].checkH = true;
-                    } else {
-                        for(var k=y; k<y+len; k++)
-                            matrixLaby[x][k].checkV = true;
-                    }
-                }
-                var items = this.getCol('Items');
-                for(var i=0; i<items.count();i++) {
-                    var lid = items.get(i).getLid();
-                    var guid = items.get(i).getGuid();
-                    var itemOne = this.getControlMgr().get(guid);
-                    var x=itemOne.x(), y=itemOne.y(), itemType=itemOne.itemType();
-                    matrixLaby[x][y].itemType = itemType;
-                    matrixLaby[x][y].itemLid = lid;
-                }
-
-                //this.matrixLaby = matrixLaby;
-
-                // перемещение первого объекта
-                var firstItem = this.getControlMgr().get(items.get(0).getGuid());
+                var parent = this.getParent()? '#ch_' + this.getLid(): options.rootContainer;
+                $(parent).append(item);
                 $(document).keydown(function(e) {
-                    var x = firstItem.x(), y=firstItem.y();
+                    if (!that.lastItem) return;
+                    var x = that.lastItem.x(), y=that.lastItem.y();
                     var deltaValue = false, deltaMethod = null;
                     if (e.which>36 && e.which<41) {
                         switch(e.which) {
@@ -69,31 +42,63 @@ define(
                         // если есть что обновить
                         if (deltaMethod) {
                             that.getControlMgr().userEventHandler(that, function(){
-                                firstItem[deltaMethod](deltaValue);
-                                vLaby.renderItem.apply(that, [firstItem]);
+                                that.lastItem[deltaMethod](deltaValue);
+                                vLaby.renderItem.apply(that, [that.lastItem]);
                             });
                         }
 
                     }
                 });
+            } else {
+                item.empty();
+            }
 
-                // отрисовка ячеек
-                for(var i=0; i<sizeY; i++) {
-                    var row = $(vLaby._templates['row']);
-                    for(var j=0; j<sizeX; j++) {
-                        var cell = $(vLaby._templates['cell']);
-                        if (matrixLaby[j][i].checkH) cell.addClass('h');
-                        if (matrixLaby[j][i].checkV) cell.addClass('v');
-                        if (matrixLaby[j][i].itemType) {
-                            cell.append($(vLaby._templates['item']).html(matrixLaby[j][i].itemType).attr('id', 'item'+matrixLaby[j][i].itemLid));
-                        }
-                        row.append(cell);
-                    }
-                    item.append(row);
+            // создаем матрицу лабиринта
+            var matrixLaby = [];
+            var sizeX = this.sizeX(), sizeY = this.sizeY();
+            for(var i=0; i<sizeX; i++) {
+                matrixLaby[i] = [];
+                for(var j=0; j<sizeY; j++) {
+                    matrixLaby[i][j] = {checkH:false, checkV:false, itemTypes:[]};
                 }
+            }
 
-                var parent = this.getParent()? '#ch_' + this.getLid(): options.rootContainer;
-                $(parent).append(item);
+            var walls = this.getCol('Walls');
+            for(var i=0; i<walls.count();i++) {
+                var wall = this.getControlMgr().get(walls.get(i).getGuid());
+                var x=wall.x(), y=wall.y(), len=wall.length(), wallType=wall.wallType();
+                if (wallType == 'H') {
+                    for(var k=x; k<x+len; k++)
+                        matrixLaby[k][y].checkH = true;
+                } else {
+                    for(var k=y; k<y+len; k++)
+                        matrixLaby[x][k].checkV = true;
+                }
+            }
+            var items = this.getCol('Items');
+            for(var i=0; i<items.count();i++) {
+                var lid = items.get(i).getLid();
+                var guid = items.get(i).getGuid();
+                var itemOne = this.getControlMgr().get(guid);
+                var x=itemOne.x(), y=itemOne.y(), itemType=itemOne.itemType();
+                matrixLaby[x][y].itemTypes.push({type:itemType, lid:lid});
+            }
+
+            //this.matrixLaby = matrixLaby;
+
+            // отрисовка ячеек
+            for(var i=0; i<sizeY; i++) {
+                var row = $(vLaby._templates['row']);
+                for(var j=0; j<sizeX; j++) {
+                    var cell = $(vLaby._templates['cell']);
+                    if (matrixLaby[j][i].checkH) cell.addClass('h');
+                    if (matrixLaby[j][i].checkV) cell.addClass('v');
+                    for (var k=0; k<matrixLaby[j][i].itemTypes.length; k++) {
+                        cell.append($(vLaby._templates['item']).html(matrixLaby[j][i].itemTypes[k].type).attr('id', 'item'+matrixLaby[j][i].itemTypes[k].lid));
+                    }
+                    row.append(cell);
+                }
+                item.append(row);
             }
         }
 

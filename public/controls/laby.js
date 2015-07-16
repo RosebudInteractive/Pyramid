@@ -65,6 +65,8 @@ define(
                     }
                     if (modified)
                         this._isRendered(false);
+                    else if (this.isDataModified())
+                        this._isRendered(false);
                 }
                 this._isProcessed(true);
             },

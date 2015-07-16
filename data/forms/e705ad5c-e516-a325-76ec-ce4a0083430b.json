@@ -158,28 +158,6 @@
                   }
                 ],
                 "Items":[
-                  {
-                    "$sys": {
-                      "guid": "266c2480-b992-b2c6-2821-755de7006249",
-                      "typeGuid": "55c5c9e5-75fe-5eaf-a9a8-f03cd0748bef"
-                    },
-                    "fields": {
-                      "X": 2,
-                      "Y": 1,
-                      "ItemType": "H"
-                    }
-                  },
-                  {
-                    "$sys": {
-                      "guid": "70ebe204-54c8-5c1e-e037-7af92aadc62b",
-                      "typeGuid": "55c5c9e5-75fe-5eaf-a9a8-f03cd0748bef"
-                    },
-                    "fields": {
-                      "X": 3,
-                      "Y": 4,
-                      "ItemType": "Y"
-                    }
-                  }
                 ]
               }
             }

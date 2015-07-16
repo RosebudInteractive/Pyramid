@@ -248,6 +248,9 @@ $(document).ready( function() {
                         commClient: commClient
                     });
 
+                    // глобальная переменная для доступа к методом дебага
+                    $u = uccelloClt.getDebugApi();
+
                     /**
                      * Получить датасеты текущего контекста и отобразить в комбо
                      */
@@ -557,6 +560,21 @@ $(document).ready( function() {
                             that.selectContext({vc:vcGuid,  side: vcSide, formGuids:resGuid?[resGuid]:'all'});
                         else
                             that.clearTabs();
+                    });
+
+                    $('#addItem').click(function(){
+                        function makeid()
+                        {
+                            var text = "";
+                            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+                            for( var i=0; i < 1; i++ )
+                                text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+                            return text;
+                        }
+                        $u.add('Item', 'Item', {"X": 0, "Y": 0, "ItemType": makeid()}, 'Laby', 'Items');
+                        $u.r();
                     });
 
                     $('#userContextOn').change(function(){
